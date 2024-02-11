@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .sec-wpr {
+            display: flex;
+            align-items: center;
+        }
+
+        .sec-cntnt {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .card-row {
+            width: 100%;
+            display: flex;
+        }
+
+        .card-lft-col {
+            width: 64%;
+            /* flex: 0 1 auto; */
+            /* flex: 0 0 auto; */
+            flex-grow: 1;
+            padding-right: 20px;
+            animation: bounce-in-right 0.4s cubic-bezier(.1,.35,.04,1.52);
+            animation: bounce-in-right 0.4s ease;
+        }
+
+        .card-rht-col {
+            /* flex: 0 0 auto; */
+            width: 64%;
+            flex-grow: 1;
+            padding-left: 20px;
+            animation: bounce-in-right 0.4s ease;
+        }
+
+
+        .card-lft-col.sml {
+            width: 36%;
+            /* flex: 0 1 auto; */
+            /* flex-grow: 0; */
+            /* flex-shrink: 1; */
+            /* width: auto; */
+            /* flex-shrink: 1; */
+            padding-right: 0;
+            animation: none;
+            /* transition: all 0.4s ease-in-out; */
+        }
+
+        .card-rht-col.sml {
+            width: 36%;
+            /* flex: 0 1 auto; */
+            /* width: auto; */
+            /* flex-shrink: 1; */
+            /* flex-shrink: 1; */
+            padding-left: 0;
+            animation: none;
+            /* transition: all 0.4s ease-in-out; */
+        }
+
+
+        
+
+        @keyframes bounce-in-right {
+            0% {
+                /* opacity: 0; */
+                /* transform: translateX(2000px); */
+                width: 36%;
+            }
+
+            /* 60% {
+                opacity: 1;
+                transform: translateX(-30px);
+            } */
+
+            40% {
+                width: 68%;
+            }
+            80% {
+                width: 60%;
+            }
+
+            100% {
+                width: 64%;
+            }
+        }
+
+
+
+
+
+
+
+
+
+        .lft-card {
+            padding: 53px 50px 70px;
+            border-radius: 20px;
+            height: 100%;
+            width: 100%;
+            min-height: 80vh;
+            background: #ff6ba8 !important;
+        }
+
+        .lft-card .lft-card-cntnt {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .lft-card .lft-card-cntnt h2 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .lft-card .lft-card-cntnt ul {
+            padding-left: 15px;
+            margin-top: 20px;
+        }
+
+        .lft-card .lft-card-cntnt ul li {
+            margin-bottom: 8px;
+        }
+
+        .right-card {
+            height: 100%;
+            border-radius: 20px;
+            width: 100%;
+            min-height: 80vh;
+            background: #ffd8b6 !important;
+        }
+    </style>
+</head>
+
+<body style="background-color: #3f3f3f;">
+    <section class="sec-wpr card-swipe-sec" style="height: 100vh;">
+        <div class="sec-cntnt">
+            <div class="card-row">
+                <div class="card-lft-col">
+                    <div class="lft-card"
+                        style="background: url(images2/left-card-bg.png) left center / cover no-repeat;">
+                        <div class="lft-card-cntnt">
+                            <h2>For providers</h2>
+                            <p class="sub-hdng">
+                                LocAI allows you to deliver a faster, lower cost service to your clients.
+                            </p>
+                            <ul>
+                                <li>
+                                    Put AI to work: Reduce project turnaround time by up to 70%
+                                </li>
+                                <li>
+                                    Save As You Scale: Cut costs by 50% versus manual localization.
+                                </li>
+                                <li>
+                                    Unleash collaboration: User-friendly project management for unlimited users.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-rht-col sml">
+                    <div class="right-card"
+                        style="background: url(images2/right-card-bg.png) left center / cover no-repeat;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.right-card').addEventListener('mouseenter', (e) => {
+            // console.log(e);
+            // console.log(this);
+            const card = e.target;
+            card.closest('.card-swipe-sec').querySelector('.card-lft-col').classList.add('sml');
+            // card.closest('.card-swipe-sec').querySelector('.card-lft-col').classList.remove('anim');
+            // card.closest('.card-swipe-sec').querySelector('.card-rht-col').classList.add('anim');
+            card.closest('.card-swipe-sec').querySelector('.card-rht-col').classList.remove('sml');
+            card.closest('.card-swipe-sec').querySelector('.lft-card').classList.add('sml');
+            card.classList.remove('sml');
+        })
+        document.querySelector('.lft-card').addEventListener('mouseenter', (e) => {
+            // console.log(e);
+            // console.log(this);
+            const card = e.target;
+            card.closest('.card-swipe-sec').querySelector('.card-rht-col').classList.add('sml');
+            // card.closest('.card-swipe-sec').querySelector('.card-rht-col').classList.remove('anim');
+            // card.closest('.card-swipe-sec').querySelector('.card-lft-col').classList.add('anim');
+            card.closest('.card-swipe-sec').querySelector('.card-lft-col').classList.remove('sml');
+            card.closest('.card-swipe-sec').querySelector('.right-card').classList.add('sml');
+            card.classList.remove('sml');
+        })
+    </script>
+</body>
+
+</html>
